@@ -40,7 +40,15 @@
             <!-- start sidebar menu -->
             @include('admin.layouts.sidebar')
             <!-- end sidebar menu -->
-            @yield('main')
+            <!-- start page content -->
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                    @include('admin.layouts.page-bar')
+                    
+                    @yield('main')
+                </div>
+            </div>
+            <!-- end page content -->
             <!-- start chat sidebar -->
             @include('admin.layouts.chat-sidebar')
             <!-- end chat sidebar -->

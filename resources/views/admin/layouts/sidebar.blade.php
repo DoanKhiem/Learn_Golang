@@ -33,9 +33,9 @@
 									    </div>
 	                            </div>
 	                        </li>
-	                        <li class="menu-heading">
+	                        <!-- <li class="menu-heading ">
 			                	<span>-- Main</span>
-			                </li>
+			                </li> -->
 	                        <li class="nav-item start active">
 	                            <a href="#" class="nav-link nav-toggle">
 	                                <i class="material-icons">dashboard</i>

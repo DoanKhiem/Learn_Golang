@@ -5,7 +5,7 @@
                 <div class="page-logo">
                     <a href="index.html">
                     <img alt="" src="{{ url('admin') }}/assets/img/logo.png">
-                    <span class="logo-default" >Bin Bi</span> </a>
+                    <span class="logo-default" >BinBi</span> </a>
                 </div>
                 <!-- logo end -->
 				<ul class="nav navbar-nav navbar-left in">
