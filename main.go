@@ -8,29 +8,29 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 	"time"
 )
 
 type TodoItem struct {
-	Id          int        `json:"id"`
-	Title       string     `json:"title"`
-	Description string     `json:"description"`
-	Status      string     `json:"status"`
-	CreatedAt   *time.Time `json:"created_at"`
-	UpdatedAt   *time.Time `json:"updated_at,omitempty"`
+	Id          int        `json:"id" gorm:"column:id"`
+	Title       string     `json:"title" gorm:"column:title"`
+	Description string     `json:"description" gorm:"column:description"`
+	Status      string     `json:"status" gorm:"column:status"`
+	CreatedAt   *time.Time `json:"created_at" gorm:"column:created_at"`
+	UpdatedAt   *time.Time `json:"updated_at,omitempty" gorm:"column:updated_at"`
 }
+
+func (TodoItem) TableName() string { return "todo_items" }
 
 type TodoItemCreation struct {
 	Id          int    `json:"-" gorm:"column:id"`
 	Title       string `json:"title" gorm:"column:title"`
 	Description string `json:"description" gorm:"column:description"`
-	Status      string `json:"status" gorm:"column:status"`
+	//Status      string `json:"status" gorm:"column:status"`
 }
 
-func (TodoItemCreation) TableName() string {
-	return "todo_items"
-
-}
+func (TodoItemCreation) TableName() string { return TodoItem{}.TableName() }
 
 //`id` int NOT NULL AUTO_INCREMENT,
 //`title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
@@ -51,16 +51,16 @@ func main() {
 
 	fmt.Println("Hello, World!")
 
-	now := time.Now()
-
-	item := TodoItem{
-		Id:          1,
-		Title:       "Learn Golang",
-		Description: "Learn Golang for beginners",
-		Status:      "Doing",
-		CreatedAt:   &now,
-		UpdatedAt:   &now,
-	}
+	//now := time.Now()
+	//
+	//item := TodoItem{
+	//	Id:          1,
+	//	Title:       "Learn Golang",
+	//	Description: "Learn Golang for beginners",
+	//	Status:      "Doing",
+	//	CreatedAt:   &now,
+	//	UpdatedAt:   &now,
+	//}
 	r := gin.Default()
 
 	v1 := r.Group("/v1")
@@ -69,7 +69,7 @@ func main() {
 		{
 			items.POST("", CreateItem(db))
 			items.GET("")
-			items.GET("/:id")
+			items.GET("/:id", GetItem(db))
 			items.PATCH("/:id")
 			items.DELETE("/:id")
 		}
@@ -77,7 +77,7 @@ func main() {
 
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
-			"message": item,
+			"message": "pong",
 		})
 	})
 	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
@@ -99,6 +99,28 @@ func CreateItem(db *gorm.DB) func(*gin.Context) {
 
 		context.JSON(http.StatusOK, gin.H{
 			"message": data.Id,
+		})
+	}
+}
+
+func GetItem(db *gorm.DB) func(*gin.Context) {
+	return func(context *gin.Context) {
+		var data TodoItem
+
+		id, err := strconv.Atoi(context.Param("id"))
+
+		if err != nil {
+			context.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		if err := db.Where("id = ?", id).First(&data); err.Error != nil {
+			context.JSON(http.StatusBadRequest, gin.H{"error": err.Error})
+			return
+		}
+
+		context.JSON(http.StatusOK, gin.H{
+			"message": data,
 		})
 	}
 }
