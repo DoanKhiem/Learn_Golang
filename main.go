@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/mysql"
@@ -48,30 +47,22 @@ func main() {
 		Description: "Learn Golang for beginners",
 		Status:      "Doing",
 		CreatedAt:   &now,
-		UpdatedAt:   nil,
+		UpdatedAt:   &now,
 	}
-
-	jsonDate, err := json.Marshal(item)
-
-	if err != nil {
-		fmt.Println("Error: ", err)
-		return
-	}
-
-	fmt.Println("JSON: ", string(jsonDate))
-
-	jsonStr := `{"id":1,"title":"Learn Golang","description":"Learn Golang for beginners","status":"Doing","created_at":"2024-07-04T09:32:32.4265897+07:00","updated_at":null}`
-
-	var item2 TodoItem
-
-	if err := json.Unmarshal([]byte(jsonStr), &item2); err != nil {
-		fmt.Println("Error: ", err)
-		return
-	}
-
-	fmt.Println("Item2: ", item2)
-
 	r := gin.Default()
+
+	v1 := r.Group("/v1")
+	{
+		items := v1.Group("/items")
+		{
+			items.POST("")
+			items.GET("")
+			items.GET("/:id")
+			items.PATCH("/:id")
+			items.DELETE("/:id")
+		}
+	}
+
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"message": item,
