@@ -4,7 +4,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
+	"log"
 	"net/http"
+	"os"
 	"time"
 )
 
@@ -26,6 +30,14 @@ type TodoItem struct {
 //`updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
 func main() {
+	dsn := os.Getenv("DB_CONN_STR")
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+
+	if err != nil {
+		log.Fatalln("Error: ", err)
+	}
+	fmt.Println("Connected to database", db)
+
 	fmt.Println("Hello, World!")
 
 	now := time.Now()
