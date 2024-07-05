@@ -1,6 +1,7 @@
 package main
 
 import (
+	"Learn_Golang/common"
 	"database/sql/driver"
 	"errors"
 	"fmt"
@@ -12,7 +13,6 @@ import (
 	"os"
 	"strconv"
 	"strings"
-	"time"
 )
 
 type ItemStatus int
@@ -82,12 +82,13 @@ func (item *ItemStatus) UnmarshalJSON(data []byte) error {
 }
 
 type TodoItem struct {
-	Id          int         `json:"id" gorm:"column:id"`
+	common.SQLModel
+	//Id          int         `json:"id" gorm:"column:id"`
 	Title       string      `json:"title" gorm:"column:title"`
 	Description string      `json:"description" gorm:"column:description"`
 	Status      *ItemStatus `json:"status" gorm:"column:status"`
-	CreatedAt   *time.Time  `json:"created_at" gorm:"column:created_at"`
-	UpdatedAt   *time.Time  `json:"updated_at,omitempty" gorm:"column:updated_at"`
+	//CreatedAt   *time.Time  `json:"created_at" gorm:"column:created_at"`
+	//UpdatedAt   *time.Time  `json:"updated_at,omitempty" gorm:"column:updated_at"`
 }
 
 func (TodoItem) TableName() string { return "todo_items" }
@@ -108,23 +109,6 @@ type TodoItemUpdate struct {
 }
 
 func (TodoItemUpdate) TableName() string { return TodoItem{}.TableName() }
-
-type Paging struct {
-	Page  int   `json:"page" form:"page"`
-	Limit int   `json:"limit" form:"limit"`
-	Total int64 `json:"total" form:"-"`
-}
-
-func (p Paging) Process() {
-	if p.Page <= 0 {
-		p.Page = 1
-	}
-
-	if p.Limit <= 0 || p.Limit > 100 {
-		p.Limit = 10
-	}
-
-}
 
 //`id` int NOT NULL AUTO_INCREMENT,
 //`title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
@@ -191,9 +175,7 @@ func CreateItem(db *gorm.DB) func(*gin.Context) {
 			return
 		}
 
-		context.JSON(http.StatusOK, gin.H{
-			"message": data.Id,
-		})
+		context.JSON(http.StatusOK, common.SimpleSuccessResponse(data.Id))
 	}
 }
 
@@ -213,9 +195,7 @@ func GetItem(db *gorm.DB) func(*gin.Context) {
 			return
 		}
 
-		context.JSON(http.StatusOK, gin.H{
-			"message": data,
-		})
+		context.JSON(http.StatusOK, common.SimpleSuccessResponse(data))
 	}
 }
 
@@ -240,9 +220,7 @@ func UpdateItem(db *gorm.DB) func(*gin.Context) {
 			return
 		}
 
-		context.JSON(http.StatusOK, gin.H{
-			"message": true,
-		})
+		context.JSON(http.StatusOK, common.SimpleSuccessResponse(true))
 	}
 }
 
@@ -261,15 +239,13 @@ func DeleteItem(db *gorm.DB) func(*gin.Context) {
 			context.JSON(http.StatusBadRequest, gin.H{"error": err.Error})
 		}
 
-		context.JSON(http.StatusOK, gin.H{
-			"message": true,
-		})
+		context.JSON(http.StatusOK, common.SimpleSuccessResponse(true))
 	}
 }
 
 func ListItem(db *gorm.DB) func(*gin.Context) {
 	return func(context *gin.Context) {
-		var paging Paging
+		var paging common.Paging
 		if err := context.ShouldBind(&paging); err != nil {
 			context.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
@@ -294,9 +270,6 @@ func ListItem(db *gorm.DB) func(*gin.Context) {
 			return
 		}
 
-		context.JSON(http.StatusOK, gin.H{
-			"message": result,
-			"paging":  paging,
-		})
+		context.JSON(http.StatusOK, common.NewSuccessResponse(result, paging, nil))
 	}
 }
