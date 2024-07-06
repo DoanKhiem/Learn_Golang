@@ -11,7 +11,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"strconv"
 )
 
 //`id` int NOT NULL AUTO_INCREMENT,
@@ -53,7 +52,7 @@ func main() {
 			items.GET("", ListItem(db))
 			items.GET("/:id", ginitem.GetItem(db))
 			items.PATCH("/:id", ginitem.UpdateItem(db))
-			items.DELETE("/:id", DeleteItem(db))
+			items.DELETE("/:id", ginitem.DeleteItem(db))
 		}
 	}
 
@@ -64,25 +63,6 @@ func main() {
 	})
 	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 
-}
-
-func DeleteItem(db *gorm.DB) func(*gin.Context) {
-	return func(context *gin.Context) {
-		id, err := strconv.Atoi(context.Param("id"))
-
-		if err != nil {
-			context.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-			return
-		}
-
-		if err := db.Table(model.TodoItem{}.TableName()).Where("id = ?", id).Updates(map[string]interface{}{
-			"status": "Deleted",
-		}); err.Error != nil {
-			context.JSON(http.StatusBadRequest, gin.H{"error": err.Error})
-		}
-
-		context.JSON(http.StatusOK, common.SimpleSuccessResponse(true))
-	}
 }
 
 func ListItem(db *gorm.DB) func(*gin.Context) {
