@@ -6,9 +6,9 @@ import (
 )
 
 func (sql *sqlStore) DeleteItem(ctx context.Context, cond map[string]interface{}) error {
-
+	deleteStatus := model.ItemStatusDeleted
 	if err := sql.db.Table(model.TodoItem{}.TableName()).Where(cond).Updates(map[string]interface{}{
-		"status": "Deleted",
+		"status": deleteStatus.String(),
 	}); err.Error != nil {
 		return err.Error
 	}
