@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="951f2640-8aaf-4a74-953a-0a4236cccea0" name="Changes" comment="remove project" />
+    <list default="true" id="951f2640-8aaf-4a74-953a-0a4236cccea0" name="Changes" comment="First Go File">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -114,7 +117,8 @@
     <MESSAGE value="API Delete Item" />
     <MESSAGE value="API List Item" />
     <MESSAGE value="remove project" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove project" />
+    <MESSAGE value="First Go File" />
+    <option name="LAST_COMMIT_MESSAGE" value="First Go File" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
