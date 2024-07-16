@@ -38,26 +38,52 @@ func main() {
 	//scoreThree := 42.5
 
 	// Print
+	//age := 35
+	//name := "shaun"
+	//
+	//fmt.Print("Hello, ")
+	//fmt.Print("world!\n")
+	//fmt.Print("New line \n")
+	//
+	//// Println
+	//fmt.Println("Hello, World!")
+	//fmt.Println("Goodbye, World!")
+	//fmt.Println("My age is", age, "and my name is", name)
+	//
+	//// Printf (formatted strings)
+	//fmt.Printf("My age is %v and my name is %v \n", age, name)
+	//fmt.Printf("My age is %q and my name is %q \n", age, name)
+	//fmt.Printf("age is of type %T \n", age)
+	//fmt.Printf("You scored %0.1f \n", 225.55)
+	//
+	//// Sprintf (save formatted strings)
+	//var str = fmt.Sprintf("My age is %v and my name is %v \n", age, name)
+	//fmt.Println("The saved string is:", str)
 
-	age := 35
-	name := "shaun"
+	// Arrays
+	//var ages [3]int = [3]int{20, 25, 30}
+	var ages = [3]int{20, 25, 30}
 
-	fmt.Print("Hello, ")
-	fmt.Print("world!\n")
-	fmt.Print("New line \n")
+	names := [4]string{"yoshi", "mario", "peach", "bowser"}
 
-	// Println
-	fmt.Println("Hello, World!")
-	fmt.Println("Goodbye, World!")
-	fmt.Println("My age is", age, "and my name is", name)
+	fmt.Println(ages, len(ages))
+	fmt.Println(names, len(names))
 
-	// Printf (formatted strings)
-	fmt.Printf("My age is %v and my name is %v \n", age, name)
-	fmt.Printf("My age is %q and my name is %q \n", age, name)
-	fmt.Printf("age is of type %T \n", age)
-	fmt.Printf("You scored %0.1f \n", 225.55)
+	// Slices
+	var scores = []int{100, 50, 60}
+	scores[1] = 25
+	scores = append(scores, 85)
 
-	// Sprintf (save formatted strings)
-	var str = fmt.Sprintf("My age is %v and my name is %v \n", age, name)
-	fmt.Println("The saved string is:", str)
+	fmt.Println(scores, len(scores))
+
+	// Slice ranges
+	rangeOne := names[1:3]
+	rangeTwo := names[2:]
+	rangeThree := names[:3]
+
+	fmt.Println(rangeOne, rangeTwo, rangeThree)
+
+	rangeOne = append(rangeOne, "koopa")
+	fmt.Println(rangeOne)
+
 }
