@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="951f2640-8aaf-4a74-953a-0a4236cccea0" name="Changes" comment="Loops">
+    <list default="true" id="951f2640-8aaf-4a74-953a-0a4236cccea0" name="Changes" comment="booleans and conditions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
@@ -123,7 +123,8 @@
     <MESSAGE value="Array and Slices" />
     <MESSAGE value="The Standard Library" />
     <MESSAGE value="Loops" />
-    <option name="LAST_COMMIT_MESSAGE" value="Loops" />
+    <MESSAGE value="booleans and conditions" />
+    <option name="LAST_COMMIT_MESSAGE" value="booleans and conditions" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
