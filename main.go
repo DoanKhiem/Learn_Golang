@@ -2,37 +2,60 @@ package main
 
 import "fmt"
 
-func main() {
-	menu := map[string]float64{
-		"soup":  4.99,
-		"pie":   7.99,
-		"salad": 6.99,
-		"tofu":  8.99,
-	}
-
-	fmt.Println(menu)
-	fmt.Println(menu["pie"])
-
-	// looping maps
-	for k, v := range menu {
-		fmt.Println(k, "-", v)
-	}
-
-	phonebook := map[int]string{
-		4567890: "Mario",
-		7654321: "Luigi",
-		8888888: "Peach",
-	}
-
-	fmt.Println(phonebook)
-	fmt.Println(phonebook[4567890])
-
-	phonebook[7654321] = "Bowser"
-	fmt.Println(phonebook)
-
-	phonebook[8888888] = "Yoshi"
-	fmt.Println(phonebook)
+func updateName(x string) string {
+	x = "wedge"
+	return x
 }
+
+func updateMenu(y map[string]float64) {
+	y["coffee"] = 2.99
+}
+
+func main() {
+	name := "tifa"
+	name = updateName(name)
+	fmt.Println(name)
+
+	menu := map[string]float64{
+		"pie":       5.99,
+		"ice cream": 3.99,
+	}
+
+	updateMenu(menu)
+	fmt.Println(menu)
+}
+
+//func main() {
+//	menu := map[string]float64{
+//		"soup":  4.99,
+//		"pie":   7.99,
+//		"salad": 6.99,
+//		"tofu":  8.99,
+//	}
+//
+//	fmt.Println(menu)
+//	fmt.Println(menu["pie"])
+//
+//	// looping maps
+//	for k, v := range menu {
+//		fmt.Println(k, "-", v)
+//	}
+//
+//	phonebook := map[int]string{
+//		4567890: "Mario",
+//		7654321: "Luigi",
+//		8888888: "Peach",
+//	}
+//
+//	fmt.Println(phonebook)
+//	fmt.Println(phonebook[4567890])
+//
+//	phonebook[7654321] = "Bowser"
+//	fmt.Println(phonebook)
+//
+//	phonebook[8888888] = "Yoshi"
+//	fmt.Println(phonebook)
+//}
 
 //var score = 100
 //
