@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="951f2640-8aaf-4a74-953a-0a4236cccea0" name="Changes" comment="Maps">
+    <list default="true" id="951f2640-8aaf-4a74-953a-0a4236cccea0" name="Changes" comment="pass by value">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +99,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="API Create Item" />
     <MESSAGE value="API Get item by Id" />
     <MESSAGE value="API Update item by Id" />
     <MESSAGE value="API Delete item by Id" />
@@ -123,7 +123,8 @@
     <MESSAGE value="Multiple Return Values" />
     <MESSAGE value="Package Scope" />
     <MESSAGE value="Maps" />
-    <option name="LAST_COMMIT_MESSAGE" value="Maps" />
+    <MESSAGE value="pass by value" />
+    <option name="LAST_COMMIT_MESSAGE" value="pass by value" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
