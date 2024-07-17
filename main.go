@@ -2,17 +2,49 @@ package main
 
 import "fmt"
 
-var score = 100
-
 func main() {
-	sayHello("mario")
-
-	for _, v := range points {
-		fmt.Println(v)
+	menu := map[string]float64{
+		"soup":  4.99,
+		"pie":   7.99,
+		"salad": 6.99,
+		"tofu":  8.99,
 	}
 
-	showScore()
+	fmt.Println(menu)
+	fmt.Println(menu["pie"])
+
+	// looping maps
+	for k, v := range menu {
+		fmt.Println(k, "-", v)
+	}
+
+	phonebook := map[int]string{
+		4567890: "Mario",
+		7654321: "Luigi",
+		8888888: "Peach",
+	}
+
+	fmt.Println(phonebook)
+	fmt.Println(phonebook[4567890])
+
+	phonebook[7654321] = "Bowser"
+	fmt.Println(phonebook)
+
+	phonebook[8888888] = "Yoshi"
+	fmt.Println(phonebook)
 }
+
+//var score = 100
+//
+//func main() {
+//	sayHello("mario")
+//
+//	for _, v := range points {
+//		fmt.Println(v)
+//	}
+//
+//	showScore()
+//}
 
 //func getInitials(n string) (string, string) {
 //	s := strings.ToUpper(n)
