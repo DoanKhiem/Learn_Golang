@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="951f2640-8aaf-4a74-953a-0a4236cccea0" name="Changes" comment="Receiver Functions">
-      <change beforePath="$PROJECT_DIR$/bill.go" beforeDir="false" afterPath="$PROJECT_DIR$/bill.go" afterDir="false" />
+    <list default="true" id="951f2640-8aaf-4a74-953a-0a4236cccea0" name="Changes" comment="Receiver Functions with Pointers">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +99,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="API List item" />
     <MESSAGE value="Enum Colum Status" />
     <MESSAGE value="Enum Colum Status part2" />
     <MESSAGE value="Response, paging, sql model" />
@@ -123,7 +123,8 @@
     <MESSAGE value="Pointers" />
     <MESSAGE value="structs &amp; custom types" />
     <MESSAGE value="Receiver Functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Receiver Functions" />
+    <MESSAGE value="Receiver Functions with Pointers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Receiver Functions with Pointers" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
