@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="951f2640-8aaf-4a74-953a-0a4236cccea0" name="Changes" comment="pass by value">
+    <list default="true" id="951f2640-8aaf-4a74-953a-0a4236cccea0" name="Changes" comment="Pointers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bill.go" beforeDir="false" afterPath="$PROJECT_DIR$/bill.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +100,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="API Get item by Id" />
     <MESSAGE value="API Update item by Id" />
     <MESSAGE value="API Delete item by Id" />
     <MESSAGE value="API List item" />
@@ -124,7 +124,8 @@
     <MESSAGE value="Package Scope" />
     <MESSAGE value="Maps" />
     <MESSAGE value="pass by value" />
-    <option name="LAST_COMMIT_MESSAGE" value="pass by value" />
+    <MESSAGE value="Pointers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pointers" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
