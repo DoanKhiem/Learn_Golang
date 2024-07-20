@@ -15,16 +15,16 @@ type App struct {
 
 func New() *App {
 	app := &App{
-		router: loadRoutes(),
-		rdb:    redis.NewClient(&redis.Options{}),
+		rdb: redis.NewClient(&redis.Options{}),
 	}
+	app.loadRoutes()
 
 	return app
 }
 
 func (a *App) Start(ctx context.Context) error {
 	server := &http.Server{
-		Addr:    ":3000",
+		Addr:    ":3100",
 		Handler: a.router,
 	}
 
